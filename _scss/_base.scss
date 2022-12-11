@@ -1,0 +1,620 @@
+// Import the various layout elements
+@import "header";
+@import "terminal";
+
+/*
+ * Base stylesheet for small form factors
+ * less than tablets
+ */
+
+body {
+  background-color: $color-white;
+  -webkit-text-size-adjust: none;
+}
+
+section,
+header {
+  padding-left: $full-width-paddingX;
+  padding-right: $full-width-paddingX;
+
+  main {
+    width: $main-width;
+    // !Important.  Home page scrolls horz. without this width constraint (affected by SVG <img> issues)
+    max-width: $media-size-max-width;
+  }
+}
+
+section,
+header,
+footer {
+  main {
+    position: relative;
+    margin: auto;
+  }
+}
+
+section {
+  position: relative;
+  background-color: $color-white;
+}
+
+footer {
+  width: 100%;
+  background-color: $color-blue-dark;
+  padding: $whisk-footer-base-padding-base;
+}
+
+strong {
+  color: $color-blue-dark;
+}
+
+question {
+    font-style: italic;
+    font-weight: 500;
+    font-size: 14px;
+    color: $color-blue-black;
+}
+
+spacer {
+  display: block;
+  height:10px;
+  width: 100%;
+}
+
+// Header is only shown on the "home" page
+#whiskHeader {
+  background-color: $color-blue-dark;
+  color: $color-white;
+  text-align: center;
+  // 20px accounts for the extra margin we add below fixed header in multi-line format
+  padding-top: $whisk-header-base-padding-top + 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  margin-bottom: $whisk-nodes-padding-base-Y;
+
+  h1 {
+    font-size: $header-base-h1-font-size;
+    font-weight: $header-base-h1-font-weight;
+    font-style: $header-base-h1-font-style;
+    line-height: $header-base-h1-line-height;
+    margin-bottom: 12px;
+  }
+  h5 {
+    font-size: $header-base-h5-font-size;
+    font-weight: $header-base-h5-font-weight;
+    font-style: $header-base-h5-font-style;
+    line-height: $header-base-h5-line-height;
+    margin-bottom: 4px;
+  }
+
+  h1,
+  h5 {
+    color: $color-white;
+  }
+  h6 {
+    font-style: italic;
+  }
+}
+
+/*
+ * General document styles
+ */
+.doc {
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+}
+
+.indented {
+  padding-left: $p-left-indent;
+}
+
+// Footer is shown on all content pages
+#whiskFooter {
+}
+
+#whiskIndexedLayout {
+  display: table;
+  padding-top: $whisk-header-base-padding-top;
+
+  h2 {
+    font-weight: bolder;
+  }
+
+  h3 {
+    font-weight: 500;
+  }
+
+  h4 {
+    color: $color-blue-black;
+    display: inline;
+    font-size: $h4-font-size;
+    line-height: $h4-line-height;
+    margin-top: 10px;
+    border-bottom: 2px solid $color-blue-black;
+  }
+
+  #whiskIndex {
+    // position menu relative to header
+    display: float;
+    position: fixed;
+    top: $index-menu-top-offset-base;
+    left: $index-menu-left-offset;
+    width: $index-menu-width;
+    border: $index-border;
+    z-index: 6888;
+
+    ul{
+      display: flex-direction;
+    }
+
+    li{
+      line-height: normal;
+    }
+
+    li:not(.index-menu-toggle) {
+      a {
+        display: inline-flex;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    li.index-menu-toggle {
+      // TODO: try to render our own bullet/images so we can control layout
+      /** the image will be vertically aligned in the center **/
+      //background: url(../img/bullet.png) left center no-repeat;
+      /** move the text to the right **/
+      a {
+        position: relative;
+        height: 100%;
+      }
+    }
+  }
+
+  #whiskNodes {
+    display: table-cell;
+    // Apply extra top padding to the (set of) whiskNodes on all content pages
+    padding-top: 20px;
+  }
+}
+
+#whiskNodes {
+  // Note: pad only the bottom for each "node" (so we do not double up)
+  padding-bottom: $whisk-nodes-padding-base-Y;
+  padding-left: $whisk-nodes-padding-base-X;
+  padding-right: $whisk-nodes-padding-base-X;
+
+  main {
+    display: table;
+    background: $color-bg-base-main;
+    margin-bottom: $whisk-nodes-padding-base-Y;
+  }
+
+  .content {
+    background: $color-bg-base-content;
+    // Provide for space around content's text
+    padding: 20px;
+    // Provide a space between image and content when vertical
+    margin-top: 20px;
+  }
+
+  .image-wrapper {
+    background: $color-bg-base-image-wrapper;
+    display: table-header-group;
+
+    // NOTE: margin ONLY works in horz. layout and has no impact in vert. layout
+    // margin: (top right bottom left)
+    margin: $main-image-wrapper-margin-base;
+
+    // NOTE: SVG files and the <img> tags do not work well together
+    // Important! without this style, the image will not stretch and display properly
+    img {
+      display: block;
+      background: $color-bg-base-img;
+      width: $image-wrapper-width;
+      height: $image-wrapper-height;
+      max-width: $image-wrapper-max-width;
+      align-self: center;
+      margin: auto; // allows centering in all layouts
+    }
+  }
+  #whiskSupporter{
+
+  }
+}
+
+/*
+ * Supporter logos / repo. lists / component downloads
+ */
+
+.flow-columns {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background: white;
+}
+
+.flow-item-container {
+  background: $color-white;
+  width: 100px;
+  margin: 5px;
+}
+
+.flow-item-image {
+  border-image-width: 0px;
+  max-width: 90px;
+  width: 90px;
+}
+
+/*
+ * Project Structure
+ */
+.project-structure-repo {
+  width: 240px;
+  margin: 8px;
+  padding: 10px;
+  border-radius: 10px;
+
+  a {
+    text-align: center;
+    font-size: $font-size-default;
+  }
+
+  h4 {
+    text-align: center;
+  }
+
+  .repo-title {
+    box-sizing: border-box;
+    width: 100%;
+    border-radius: 4px;
+    padding: 4px;
+    background: $color-white;
+    text-align: center;
+    font-size: 4px; //$index-menu-font-size;
+    font-weight: $index-menu-font-weight;
+    line-height: 14px;
+  }
+}
+
+/*
+ * Component releases
+ */
+
+ version {
+    font-size: $font-size-default;
+    font-style: normal;
+    font-weight: bold;
+    color: $color-blue-black;
+}
+
+.component-releases-structure {
+  width: 100%;
+  margin-top: 0px;
+  margin-bottom: 8px;
+  padding: 8px;
+  border-radius: 10px;
+
+  ctitle {
+    display: inline;
+    font-size: 16px;
+    font-weight: 500;
+    font-style: $header-base-h5-font-style;
+    margin: 0px;
+  }
+
+  ctitle::after {
+    content: " - ";
+  }
+
+  p {
+    margin: 0px;
+    margin-bottom: 2px;
+    font-style: italic;
+  }
+
+  a {
+    font-weight: normal;
+    text-align: left;
+    font-size: $font-size-default;
+    text-decoration-line: underline;
+  }
+
+  version:after {
+    content: ': ';
+  }
+
+  a:after {
+    margin-left: 4px;
+    margin-right: 4px;
+    content: '|';
+    font-weight: normal;
+    font-style: normal;
+    text-decoration-line: none;
+  }
+
+  a:last-child:after {
+    content: '';
+  }
+
+  .component-release-artifact-list {
+    box-sizing: border-box;
+    //width: 100%;
+    border-radius: 4px;
+    padding: 4px;
+    background: $color-white;
+    text-align: left;
+    font-weight: $index-menu-font-weight;
+    line-height: 14px;
+  }
+}
+
+.theme-deeper-sea-green {
+  background-color: rgba($color-logo-deeper-sea-green, 0.25);
+  border: dashed $color-logo-deeper-sea-green 2px;
+}
+
+.theme-deeper-sky-blue {
+  background-color: rgba($color-logo-deeper-sky-blue, 0.25);
+  border: dashed $color-logo-deeper-sky-blue 2px;
+}
+
+.theme-deeper-aquamarine {
+  background-color: rgba($color-logo-deeper-aquamarine, 0.25);
+  border: dashed $color-logo-deeper-aquamarine 2px;
+}
+
+.theme-darksalmon {
+  background-color: rgba($color-darksalmon, 0.25);
+  border: dashed $color-darksalmon 2px;
+}
+
+.theme-darkgoldenrod {
+  background-color: rgba($color-darkgoldenrod, 0.25);
+  border: dashed $color-darkgoldenrod 2px;
+}
+
+.theme-darkred {
+  background-color: rgba($color-darkred, 0.25);
+  border: dashed $color-darkred 2px;
+}
+
+.theme-darkorange {
+  background-color: rgba($color-darkorange, 0.25);
+  border: dashed $color-darkorange 2px;
+}
+
+.border-deeper-sea-green {
+  border: solid $color-logo-deeper-sea-green 2px;
+}
+
+.border-deeper-sky-blue {
+  border: solid $color-logo-deeper-sky-blue 2px;
+}
+
+.border-deeper-aquamarine {
+  border: solid $color-logo-deeper-aquamarine 2px;
+}
+
+.border-darksalmon {
+  border: solid $color-darksalmon 2px;
+}
+
+.border-darkgoldenrod {
+  border: solid $color-darkgoldenrod 2px;
+}
+
+.border-darkred {
+  border: solid $color-darkred 2px;
+}
+
+.border-darkorange {
+  border: solid $color-darkorange 2px;
+}
+
+/*
+ * Index (collapsible menus)
+ */
+
+.index-menu-toggle {
+  color: $color-menu-collapsible-fg;
+  background-color: $color-menu-collapsible-bg;
+  border: 1px solid $color-menuitem-collapsible-border;
+  cursor: pointer; // finger shown to let ppl know you can click it
+}
+
+.index-menu-toggle:hover {
+  background-color: $color-menu-collapsible-hover-bg;
+}
+
+.index-menuitems {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: white;
+}
+
+/*
+ * Index (collapsible)
+ */
+
+.index-menu-toggle {
+  color: $color-menu-collapsible-fg;
+  background-color: $color-menu-collapsible-bg;
+  border: $color-menuitem-collapsible-border;
+  cursor: pointer; // finger shown to let ppl know you can click it
+}
+
+.index-menu-toggle:hover {
+  background-color: $color-menu-collapsible-hover-bg;
+}
+
+.index-menuitems {
+  padding: 0 18px;
+  display: none;
+  overflow: hidden;
+  background-color: white;
+}
+
+.index-menu-start-open {
+  display: block;
+}
+
+/*
+ * Section (collapsible)
+ */
+
+.section-header, .section-toggle{
+  padding-left: 8px;
+  color: $color-menu-collapsible-fg;
+  background-color: $color-menu-collapsible-bg;
+  border: 1px solid $color-menuitem-collapsible-border;
+}
+
+.section-toggle {
+  padding-left: 30px;
+  background-size: 12px 12px;
+  background-position: 8px 50%;
+  background-repeat: no-repeat;
+  margin: 10px;
+  cursor: pointer; // finger shown to let ppl know you can click it
+}
+
+.section-toggleable {
+  padding-left: $p-left-indent;
+}
+
+.section-toggle-start-open {
+  display: block;
+}
+
+.section-toggle-start-closed {
+  display: none;
+}
+
+.section-toggle:hover {
+  background-color: $color-menu-collapsible-hover-bg;
+}
+
+.section-content {
+  // vertical | horizontal
+  padding: 0 18px;
+  display: none;
+  background-color: white;
+}
+
+/*
+ * Indexable Content Anchors
+ */
+
+// Need to create custom anchors that are aware of our fixed header
+// (i.e., position below it on click)
+a.indexable {
+  display: block;
+  position: relative;
+  // when index item is selected offset content based upon header height
+  top: $indexed-content-top-offset-base;
+  visibility: hidden;
+}
+
+#whiskIndex {
+  // Note: we will turn this off for small/base media, allow other profiles to turn on.
+  display: none;
+  background-color: $color-index-bg;
+  width: $index-menu-width;
+  // Pad the overall index <div> (and not all the nested <ul>s)
+  margin: $index-menu-margin;
+  // Add padding around overall index to visually match content padding
+  padding: $index-menu-padding;
+
+  ul {
+    background-color: $color-index-list-bg;
+    list-style-type: none;
+    list-style-position: inside;
+
+    // Override <ul> defaults:
+    margin: 0px;
+    padding: 0px;
+  }
+
+  li {
+    background-color: $color-index-item-bg;
+    color: $color-index-fg;
+    border: $index-item-border;
+    font-size: $index-menu-font-size;
+    font-weight: $index-menu-font-weight;
+    padding: $index-menuitem-padding;
+    vertical-align: top;
+    border-style: solid;
+    height: 100%;
+
+    // Control index-item (anchor) text color regardless by state
+    a {
+      color: $color-index-fg;
+      //background-color: pink;
+      // NOTE: use this to control preservine newlines & spaces
+      // WARNING: Assure that people crearint Indexes are aware!
+      white-space: pre-wrap;
+      text-decoration: none;
+      text-align: left; // set this so we do not accidentally inhereit
+    }
+    a:hover {
+      // use different color on index-item hover
+      color: $color-index-fg-highlight;
+    }
+    a:visited {
+      color: $color-index-fg;
+    }
+    a:active {
+      color: $color-index-fg;
+    }
+  }
+
+  li:hover {
+    background-color: $color-index-bg-highlight;
+    font-weight: $index-menuitem-font-weight-hover;
+    a {
+      color: $color-index-fg-highlight;
+    }
+  }
+}
+#whiskSupporter {
+  background-color: $color-index-bg;
+  position: sticky !important; /* added to make toc scroll with page */
+  float: right !important; /* added to make toc scroll with page */
+  top: 0;
+  right: 0;
+  width: 300px;
+  padding: 20px;
+  margin-top: 80px;
+  margin-bottom: 40px;
+  margin-right: 2%;
+
+  .flow-columns {
+    background-color: $color-index-bg;
+  }
+  .flow-item-container {
+    padding: 10px;
+    margin: 5px;
+  }
+}
+@media screen and (max-width: 999px) {
+  #whiskSupporter {
+    margin-top: $header-single-row-height + 90px;
+    margin-right: 2%;
+  }
+}
+
+@media screen and (max-width: 919px) {
+  #whiskSupporter {
+    float: none;
+    position: relative;
+    margin-right: 5%;
+    margin-bottom: 0px;
+    margin-top: $header-single-row-height + 120px;
+    width: 90%;
+  }
+}
+

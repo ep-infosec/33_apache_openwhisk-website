@@ -1,0 +1,265 @@
+/*
+ * Layout: Responsive media thresholds
+ */
+
+$media-size-tablet-start: 920px;
+$media-size-desktop-start: 1000px;
+$media-size-max-width: 1280px;
+
+// Adjust this value to control spacing around "whiskNodes" sections
+// TODO: only use -Y on "bottom" of each section, rename to "bottom"
+$whisk-nodes-padding-base-Y: 20px;
+$whisk-nodes-padding-base-X: 10px;
+$whisk-nodes-padding-tablet-X: 20px;
+
+// padding: (top, right, bottom, left)
+$whisk-nodes-main-content-padding-base: 10px 10px 10px 10px;
+$whisk-nodes-main-content-padding-tablet: 10px 20px 10px 20px;
+
+// TODO: see if we can eliminate this special case
+$whisk-nodes-h3-margin-bottom: 30px;
+
+/*
+ * Layout: Main Content
+ */
+
+$main-width: 100%;
+
+// Max width of <main> content elements, overrides 100% in _base.scss
+// Note: the 'image-wrapper' will automatically consume the remaining % for horizontal (block) layout
+$main-content-width-desktop: 60%;
+$main-content-width-tablet: 50%;
+
+// margin: (top, right, bottom, left)
+$main-image-wrapper-margin-base: 10px 10px 10px 10px;
+
+/*
+ * Layout: Header
+ */
+
+$header-single-row-height: 60px;
+$header-multi-row-height: $header-single-row-height + 76px;
+
+// Allow for a fixed top banner on all content pages
+$whisk-header-base-padding-top: $header-multi-row-height;
+$whisk-header-tablet-padding-top: $header-multi-row-height;
+$whisk-header-desktop-padding-top: $header-single-row-height;
+$whisk-header-base-padding-X: $whisk-nodes-padding-base-X;
+
+/*
+ * Layout: Footer
+ */
+
+// padding (top-bottom, left-right)
+$whisk-footer-base-padding-base: 20px 20px;
+$whisk-footer-base-padding-tablet: 20px 20px;
+
+/*
+ * Layout: Body
+ */
+
+$full-width-paddingX: 10px;
+
+/*
+ * Layout: Logo
+ */
+
+// Note: this is the actual size of the .PNG file which has built-in spacing
+// so we do not need to add any margins/padding/borders.
+$logo-relative-filename: "/images/logo/apache-openwhisk-shadowed.svg";
+$logo-width: 240px;
+$logo-height: 60px;
+
+/*
+ * Theme Colors
+ */
+
+$color-blue-dark: #29558f;
+$color-blue-black: #0b1828;
+$color-blue-hover: transparentize($color-blue-dark, 0.94);
+$color-blue-gray-light: #eff2f5;
+$color-blue-gray-medium: #455973;
+$color-blue-gray-dark: #131920;
+$color-blue-gray-light-text: #9da6ab;
+$color-blue-dark-text: #00091a;
+$color-white: #fff;
+$color-gray-percent-56: #959595;
+$color-gray-percent-70: #b2b2b2;
+$color-gray-percent-76: #c2c2c2;
+$color-gray-percent-78: #c6c6c6;
+$color-gray-percent-82: #d0d0d0;
+$color-gray-percent-94: #efefef;
+$color-gray-percent-96: #f5f5f5;
+$color-darksalmon: #8e7ae9;
+$color-darkgoldenrod: #b8860b;
+$color-darkred: #ff0000;
+$color-darkorange: #ff8c00;
+
+/*
+ * Logo Colors
+ */
+
+$color-logo-deeper-steel-blue: #325c80;
+$color-logo-deeper-sky-blue: #5aaafa;
+$color-logo-deeper-sea-green: #008571;
+$color-logo-deeper-aquamarine: #6eedd8;
+
+/*
+ * Theme Colors
+ */
+
+$color-fg-base-light-text: ghostwhite;
+$color-bg-base-main: $color-white;
+$color-bg-base-image-wrapper: $color-white;
+$color-bg-base-content: ghostwhite;
+$color-bg-base-img: transparent;
+$color-bg-tablet-main: $color-white;
+$color-bg-desktop-main: $color-white;
+
+$color-header-bg: $color-blue-dark;
+$color-header-bg-section-logo: transparent;
+$color-header-bg-section-menu-text: transparent;
+$color-header-bg-section-menu-icons: transparent;
+$color-header-fg: white;
+$color-header-icon-bg: $color-blue-gray-medium;
+$color-header-icon-border: white;
+$color-header-icon-bg-image: transparent;
+
+$color-bg-tablet-image-wrapper-border: 8px solid white;
+// TODO: include in theme palette
+$color-anchors: #2955d7;
+
+/*
+ * Fonts
+ */
+
+$font-family-default: "Roboto", sans-serif;
+$font-family-code: "Courier New", Courier, monospace;
+$font-size-default: 14px;
+$font-weight-default: 300;
+$font-weight-bold: 500;
+$line-height-default: 22px;
+
+/*
+ * Text
+ */
+
+$h1-font-size: 32px;
+$h1-line-height: normal;
+
+$h2-font-size: 28px;
+$h2-line-height: normal;
+
+$h3-font-size: 24px;
+$h3-line-height: 32px;
+
+$h4-font-size: 22px;
+$h4-line-height: 30px;
+
+$h5-font-size: 16px;
+$h5-line-height: 24px;
+
+$h6-font-size: $font-size-default;
+$h6-line-height: 24px;
+
+$p-font-size: $font-size-default;
+$p-font-weight: $font-weight-default;
+$p-line-height: $line-height-default;
+
+$p-left-indent: 2em;
+
+/*
+ * Header
+ */
+$header-base-h1-font-size: 32px;
+$header-base-h1-font-weight: 300;
+$header-base-h1-font-style: normal;
+$header-base-h1-line-height: 42px;
+
+$header-base-h5-font-size: 14px;
+$header-base-h5-font-weight: 300;
+$header-base-h5-font-style: normal;
+$header-base-h5-line-height: 28px;
+
+$header-tablet-h1-font-size: $header-base-h1-font-size + 4px;
+$header-tablet-h1-font-weight: $header-base-h1-font-weight;
+$header-tablet-h1-font-style: $header-base-h1-font-style;
+$header-tablet-h1-line-height: $header-base-h1-line-height + 2px;
+
+$header-tablet-h5-font-size: $header-base-h5-font-size + 2px;
+$header-tablet-h5-font-weight: $header-base-h5-font-weight;
+$header-tablet-h5-font-style: $header-base-h5-font-style;
+$header-tablet-h5-line-height: $header-base-h5-line-height;
+
+/*
+ * Index
+ */
+
+$index-menu-width: 220px;
+
+// position menu relative to header
+$index-menu-margin: 10px;
+$index-menu-padding: 8px;
+
+$index-menu-top-offset-base: $header-multi-row-height + 10px;
+$index-menu-top-offset-desktop: $header-single-row-height + 10px;
+$indexed-content-top-offset-base: -$index-menu-top-offset-base - 20px;
+$indexed-content-top-offset-desktop: -$index-menu-top-offset-desktop - 20px;
+
+// left offset matches main body nodes
+$index-menu-left-offset: $whisk-nodes-padding-base-X;
+$index-menu-font-size: 12.5px;
+$index-menu-font-weight: 500;
+$index-menu-font-letter-spacing: 0.5px;
+
+$index-menuitem-padding: 2px;
+$index-menuitem-line-height: normal;
+$index-menuitem-font-weight-hover: 400;
+
+$color-index-bg: $color-bg-base-content;
+$color-index-fg: $color-blue-gray-dark;
+$color-index-bg-highlight: $color-blue-gray-medium;
+$color-index-fg-highlight: $color-white;
+$color-index-border: transparent;
+$color-index-list-bg: transparent;
+$color-index-list-border: transparent;
+$color-index-item-bg: transparent;
+$color-index-item-border: transparent;
+
+$index-border: 0px solid $color-index-list-border;
+$index-item-border: 2px solid $color-index-item-border;
+
+/*
+ * Index (collapsible menus)
+ */
+
+$color-menu-collapsible-fg: white;
+$color-menu-collapsible-bg: $color-blue-dark;
+$color-menu-collapsible-hover-bg: $color-blue-gray-medium;
+$color-menuitem-collapsible-border: 1px solid transparent;
+
+/*
+ * Terminal
+ */
+
+// TODO if we adopt a color, we should add it to our theme colors
+$color-terminal-bg: #001a33;
+$color-terminal-fg: $color-white;
+$terminal-padding: 8px 8px 8px 8px;
+$terminal-default-border: 1px solid $color-blue-gray-light;
+$terminal-width: 700px;
+$terminal-margin-bottom: 10px;
+$terminal-font-weight: 300;
+$terminal-font-size: 14px;
+$terminal-line-height: 140%;
+$terminal-pre-margin: 0px;
+$terminal-line-number-padding: 10px;
+
+/*
+ * Image Wrapper
+ */
+
+// prevent images from renmdering too large using width to determine scale
+$image-wrapper-width: 100%;
+$image-wrapper-height: 100%;
+$image-wrapper-max-width: 500px;
